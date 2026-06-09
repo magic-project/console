@@ -1,0 +1,14 @@
+{
+    "name": "magic/console",
+    "description": "Standalone console component for Magic Agent CLI.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magic\\Console\\": "src/"
+        }
+    }
+}

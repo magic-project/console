@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Magic\Console;
 
+use Magic\Console\Contracts\ExceptionHandlerInterface;
 use Magic\Console\Exceptions\InvalidOptionException;
 use Magic\Console\Exceptions\MissingArgumentException;
 use Throwable;
@@ -13,7 +14,7 @@ final class Application
     private readonly CommandRegistry $commands;
     private readonly Router $router;
     private readonly Help $help;
-    private readonly ExceptionHandler $exceptions;
+    private ExceptionHandlerInterface $exceptions;
 
     public function __construct(
         private readonly string $name,
@@ -28,6 +29,13 @@ final class Application
     public function add(Command $command): self
     {
         $this->commands->add($command);
+
+        return $this;
+    }
+
+    public function exceptionHandler(ExceptionHandlerInterface $handler): self
+    {
+        $this->exceptions = $handler;
 
         return $this;
     }

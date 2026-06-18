@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Magic\Console;
 
+use Magic\Console\Contracts\ExceptionHandlerInterface;
 use Magic\Console\Exceptions\CommandFailedException;
 use Magic\Console\Exceptions\InvalidOptionException;
 use Magic\Console\Exceptions\MissingArgumentException;
 use Magic\Console\Exceptions\UnknownCommandException;
 use Throwable;
 
-final class ExceptionHandler
+final class ExceptionHandler implements ExceptionHandlerInterface
 {
     public function handle(Throwable $exception, Input $input, Output $output): int
     {
